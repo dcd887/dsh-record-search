@@ -1,0 +1,16 @@
+﻿- insert:
+    - id: record-search
+      name: 'dsh-record-search'
+      config:
+        # 留空 = 默认位置：缓存 <DSH_HOME>/cache/record-search，会话库 <DSH_HOME>/sessions
+        cacheDir: ''
+        sessionsDir: ''
+        # 距上次建索引超过这个毫秒数，下一次搜索会顺手后台增量更新
+        refreshMs: 60000
+        # 结果里最多返回多少个会话（每个会话最多 maxHits 条片段）
+        maxSessions: 40
+        maxHits: 3
+        # 片段长度（字符）
+        snippetChars: 110
+        # 工具输出只截取前 N 个字符进索引（避免几十 MB 的日志撑爆索引）
+        toolOutputChars: 600

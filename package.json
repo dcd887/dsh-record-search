@@ -1,0 +1,65 @@
+﻿{
+  "name": "dsh-record-search",
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Full-text search over every DeepSeek Harness session: one Chinese character or word matches user messages, assistant replies and tool-output summaries, with a sidebar panel and a record_search tool.",
+  "icon": "./icon.svg",
+  "meta": {
+    "title": "会话记录搜索",
+    "description": "输一个字或词，实时匹配所有会话正文（你打的字、助手回复、工具输出摘要），点结果直接跳转到那次会话。"
+  },
+  "exports": {
+    ".": "./entry.js",
+    "./client": "./client.js",
+    "./package.json": "./package.json",
+    "./locale/*.json": "./locale/*.json"
+  },
+  "files": [
+    "entry.js",
+    "impl.js",
+    "client.js",
+    "cordis.patch.yml",
+    "icon.svg",
+    "locale",
+    "README.md",
+    "LICENSE",
+    "selftest.mjs"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar"
+      ]
+    }
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "search",
+    "session",
+    "history",
+    "sidebar",
+    "web-ui"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcd887/dsh-record-search.git"
+  },
+  "scripts": {
+    "test": "node selftest.mjs"
+  },
+  "homepage": "https://github.com/dcd887/dsh-record-search#readme",
+  "bugs": {
+    "url": "https://github.com/dcd887/dsh-record-search/issues"
+  }
+}
