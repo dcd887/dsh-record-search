@@ -542,6 +542,15 @@ export function apply(ctx, rawConfig) {
         kind: 'prefix',
         path: ROUTE,
         handler: async (req, res) => {
+          const connection = ctx.get('connection')
+          if (connection !== undefined && typeof connection.requestRejection === 'function') {
+            const rejection = connection.requestRejection(req)
+            if (rejection !== undefined) {
+              res.statusCode = rejection
+              res.end()
+              return
+            }
+          }
           try {
             const url = new URL(req.url ?? '/', 'http://127.0.0.1')
             const pathname = url.pathname.replace(/\/+$/u, '')
