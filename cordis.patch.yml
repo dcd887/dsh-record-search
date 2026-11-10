@@ -1,4 +1,4 @@
-﻿- insert:
+- insert:
     - id: record-search
       name: 'dsh-record-search'
       config:
